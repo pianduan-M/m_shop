@@ -102,6 +102,9 @@ export default {
       this.$refs.raxModalMaskRef.style.display = 'none'
       this.$refs.largeImgRef.src = ''
     }
+  },
+  beforeDestroy() {
+    document.body.removeChild(this.$refs.raxModalMaskRef)
   }
 }
 </script>

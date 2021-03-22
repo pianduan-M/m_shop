@@ -51,10 +51,11 @@ export default {
   mounted() {
     this.$nextTick(() => {
       const body = document.querySelector("body");
+
       if (body.append) {
-        body.append(this.$el);
+        body.append(this.$refs.popupRef);
       } else {
-        body.appendChild(this.$el);
+        body.appendChild(this.$refs.popupRef);
       }
       this.$refs.scrollRef && this.$refs.scrollRef.refresh()
     });
@@ -75,6 +76,9 @@ export default {
     beforeEnter() {
       this.$refs.popupRef.style.width = '100%'
     }
+  },
+  beforeDestroy() {
+    document.body.removeChild(this.$el)
   }
 }
 </script>
